@@ -1,6 +1,12 @@
 package swift.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static swift.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static swift.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static swift.logic.parser.CliSyntax.PREFIX_NAME;
+import static swift.logic.parser.CliSyntax.PREFIX_PHONE;
+import static swift.logic.parser.CliSyntax.PREFIX_TAG;
+import static swift.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -19,7 +25,6 @@ import swift.model.person.Name;
 import swift.model.person.Person;
 import swift.model.person.Phone;
 import swift.model.tag.Tag;
-import swift.logic.parser.CliSyntax;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -32,14 +37,14 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + CliSyntax.PREFIX_NAME + "NAME] "
-            + "[" + CliSyntax.PREFIX_PHONE + "PHONE] "
-            + "[" + CliSyntax.PREFIX_EMAIL + "EMAIL] "
-            + "[" + CliSyntax.PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + CliSyntax.PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_PHONE + "PHONE] "
+            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + CliSyntax.PREFIX_PHONE + "91234567 "
-            + CliSyntax.PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_PHONE + "91234567 "
+            + PREFIX_EMAIL + "johndoe@example.com";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -49,7 +54,7 @@ public class EditCommand extends Command {
     private final EditPersonDescriptor editPersonDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
+     * @param index                of the person in the filtered person list to edit
      * @param editPersonDescriptor details to edit the person with
      */
     public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
@@ -77,7 +82,7 @@ public class EditCommand extends Command {
         }
 
         model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 
@@ -126,7 +131,8 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Tag> tags;
 
-        public EditPersonDescriptor() {}
+        public EditPersonDescriptor() {
+        }
 
         /**
          * Copy constructor.
