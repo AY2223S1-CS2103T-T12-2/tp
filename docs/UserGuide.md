@@ -255,7 +255,7 @@ _Details coming soon ..._
 | **Add Contact**    | `add_contact n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add_contact n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
 | **Clear Contact**  | `clear`                                                                                                                                                               |
 | **Delete Contact** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit Contact**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Edit Contact**   | `edit_contact INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
 | **Find Contact**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
 | **Edit Task**    | `edit_task INDEX [n/NAME] [c/CONTACT_INDEX]`<br> e.g., `edit_task 3 n/Product meeting c/3`
 | **Delete Task**    | `delete_task INDEX`<br> e.g., `delete_task 3`
