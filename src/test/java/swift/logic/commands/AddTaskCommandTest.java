@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.UUID;
 import java.util.function.Predicate;
 
@@ -116,6 +117,16 @@ public class AddTaskCommandTest {
 
         @Override
         public void setAddressBookFilePath(Path addressBookFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<String> getCommandHistory() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addCommandToCommandHistory(String commandWord) {
             throw new AssertionError("This method should not be called.");
         }
 

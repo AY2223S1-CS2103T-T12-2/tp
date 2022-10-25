@@ -53,6 +53,9 @@ public class LogicManager implements Logic {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
 
+        model.addCommandToCommandHistory(commandText.split(" ")[0]);
+        logger.info("Command history: " + model.getCommandHistory().toString());
+
         return commandResult;
     }
 

@@ -1,6 +1,7 @@
 package swift.model;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -65,6 +66,20 @@ public interface Model {
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
+
+    /**
+     * Returns a list of commands that have been successfully executed.
+     *
+     * @return List of commands that have been successfully executed.
+     */
+    List<String> getCommandHistory();
+
+    /**
+     * Adds a command to the list of commands that have been successfully executed.
+     *
+     * @param commandWord Command to be added to the list of commands that have been successfully executed.
+     */
+    void addCommandToCommandHistory(String commandWord);
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.

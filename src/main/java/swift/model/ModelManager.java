@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static swift.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -30,6 +31,7 @@ public class ModelManager implements Model {
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<PersonTaskBridge> filteredBridges;
+    private final List<String> commandHistory;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -44,6 +46,7 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
         filteredBridges = new FilteredList<>(this.addressBook.getBridgeList());
+        commandHistory = new ArrayList<>();
     }
 
     public ModelManager() {
@@ -83,6 +86,16 @@ public class ModelManager implements Model {
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         userPrefs.setAddressBookFilePath(addressBookFilePath);
+    }
+
+    @Override
+    public List<String> getCommandHistory() {
+        return commandHistory;
+    }
+
+    @Override
+    public void addCommandToCommandHistory(String command) {
+        commandHistory.add(command);
     }
 
     //=========== AddressBook ================================================================================
