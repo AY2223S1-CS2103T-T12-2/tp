@@ -66,6 +66,9 @@ more quickly than a traditional GUI app.
 - Extraneous parameters for commands that do not take in parameters (such as `help`, `list_contact`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
+- Contact and Task names must be unique and only contain alphanumeric characters and spaces.<br>
+  e.g. `add_contact n/John Doe` is valid, but `add_contact n/John!` is invalid.
+
 </div>
 
 ### Viewing help: `help`
