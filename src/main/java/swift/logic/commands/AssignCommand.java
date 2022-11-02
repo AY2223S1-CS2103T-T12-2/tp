@@ -35,7 +35,7 @@ public class AssignCommand extends Command {
             + PREFIX_CONTACT + "1 "
             + PREFIX_TASK + "2";
 
-    public static final String MESSAGE_ASSIGN_SUCCESS = "Task %1$s assigned to contact %2$s!";
+    public static final String MESSAGE_ASSIGN_SUCCESS = "Task %1$s assigned to contact %2$s";
     public static final String MESSAGE_DUPLICATE_BRIDGE = "This task is already assigned to this contact";
 
     private final Index contactIndex;
